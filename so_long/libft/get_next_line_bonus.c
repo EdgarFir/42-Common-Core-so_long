@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:59:54 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/23 18:53:31 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/29 11:57:12 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ char	*get_next_line(int fd)
 	nl_i = ft_strlen_chr(buf[fd], '\n');
 	if (nl_i < (int)(ft_strlen_chr(buf[fd], 0) - 1))
 	{
-		rem = ft_strdup(&buf[fd][nl_i + 1]);
-		ln = ft_substr(buf[fd], 0, nl_i + 1);
+		rem = my_ft_strdup(&buf[fd][nl_i + 1]);
+		ln = my_ft_substr(buf[fd], 0, nl_i + 1);
 		if (!rem || !ln)
 			return (free(buf[fd]), buf[fd] = NULL, clean_all(0, rem, ln));
 		free(buf[fd]);
 		buf[fd] = rem;
 		return (ln);
 	}
-	ln = ft_strdup(buf[fd]);
+	ln = my_ft_strdup(buf[fd]);
 	return (free(buf[fd]), buf[fd] = NULL, ln);
 }

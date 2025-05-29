@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 19:36:03 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/23 18:54:17 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/29 11:56:31 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_str);
 }
 
-char	*ft_strdup(const char *s)
+char	*my_ft_strdup(const char *s)
 {
 	char	*new_s;
 	int		i;
@@ -90,7 +90,7 @@ char	*ft_strdup(const char *s)
 	return (new_s);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*my_ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub_str;
 	size_t	s_len;

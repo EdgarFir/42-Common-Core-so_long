@@ -1,12 +1,12 @@
 NAME = so_long
 
-SRCS = so_long.c so_long_error_utils.c
+SRCS = so_long.c so_long_error_utils.c so_long_coord_utils.c so_long_map_check.c so_long_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = 
 
 RM = rm -rf
 
