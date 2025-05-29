@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:32:35 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/22 01:16:33 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:46:55 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,16 @@ int			ft_putstr(char *s);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_isspace(int c);
 long long	ft_atoll(const char *nptr);
+/* GNL */
+char		*get_next_line(int fd);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strdup(const char *s);
+size_t		ft_strlen_chr(const char *s, char c);
+char		*build_buffer(char *buffer, char *buffer_res, ssize_t bytes_read);
+int			has_new_line(char *buffer_res);
+char		*read_buffer(int fd, char *buffer);
+char		*clean_all(char *buffer, char *line, char *remainder);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif

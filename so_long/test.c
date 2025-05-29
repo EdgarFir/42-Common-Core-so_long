@@ -9,7 +9,7 @@ void init_game()
 	void *sprite;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1250, 500, "so_long 42");
+	win_ptr = mlx_new_window(mlx_ptr, 1920, 500, "so_long 42");
 	int x;
 	int y;
 	sprite = mlx_xpm_file_to_image(mlx_ptr, "sprites/exit.xpm", &x, &y);
@@ -31,16 +31,16 @@ int main()
 	int  width;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 5 * 64, 5 * 64, "so_long 42");
+	win_ptr = mlx_new_window(mlx_ptr, 25 * 64, 13 * 64, "so_long 42");
 	int x;
 	int y;
 	player = mlx_xpm_file_to_image(mlx_ptr, "textures/player_bg.xpm", &x, &y);
 	printf("%d %d", x, y);
 	collect = mlx_xpm_file_to_image(mlx_ptr, "textures/collect.xpm", &x, &y);
 	floor = mlx_xpm_file_to_image(mlx_ptr, "textures/floor.xpm", &x, &y);
-	 for (int i = 0; i < 5 * 64; i++)
+	 for (int i = 0; i < 25 * 64; i++)
 	{
-	 	for (int j = 0; j < 5 * 64; j++)
+	 	for (int j = 0; j < 13 * 64; j++)
 			mlx_put_image_to_window(mlx_ptr, win_ptr, collect, (i * 64), (j * 64));
 
 	}

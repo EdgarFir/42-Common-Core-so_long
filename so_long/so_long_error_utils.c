@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   so_long_error_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 23:41:30 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/22 23:04:44 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/28 23:47:27 by edfreder          #+#    #+#             */
+/*   Updated: 2025/05/29 00:38:40 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-long long	ft_atoll(const char *nptr)
+int	send_err(char *err, int status)
 {
-	long long	result;
-	int			signal;
-	int			i;
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(err, 2);
+	return (status);
+}
 
-	result = 0;
-	signal = 1;
-	i = 0;
-	while (ft_isspace(nptr[i]))
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-			signal = -signal;
-		i++;
-	}
-	while (ft_isdigit(nptr[i]))
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (result * signal);
+int clean_and_return(t_list **lst, int fd, int status)
+{
+	if (*lst)
+		ft_lstclear(lst, &free);
+	if (fd > 2)
+		close(fd);
+	return (status);
 }

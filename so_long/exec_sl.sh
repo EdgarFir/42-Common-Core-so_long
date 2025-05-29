@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cc test.c -I /usr/include -Imlx -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+cc test.c -I/usr/include -I mlx -L minilibx-linux/. -lmlx -L/usr/lib/X11 -lXext -lX11

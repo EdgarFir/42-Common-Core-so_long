@@ -6,7 +6,7 @@
 #    By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 22:26:27 by edfreder          #+#    #+#              #
-#    Updated: 2025/05/21 23:44:48 by edfreder         ###   ########.fr        #
+#    Updated: 2025/05/23 18:54:25 by edfreder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS_P1 = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		  ft_atoi.c ft_calloc.c ft_strdup.c ft_strcmp.c ft_isspace.c \
 		  ft_format_c.c ft_format_i_d.c ft_format_p.c ft_format_s.c ft_format_u.c \
 		  ft_format_x.c ft_is_valid_conv.c ft_putnbr_base.c ft_putstr.c ft_printf.c \
-		  ft_atoll.c
+		  ft_atoll.c get_next_line_bonus.c get_next_line_utils_bonus.c
 
 SRCS_P2 = ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 		  ft_striteri.c	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
