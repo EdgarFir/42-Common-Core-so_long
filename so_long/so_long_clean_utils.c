@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   so_long_clean_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 00:33:41 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/04 23:07:56 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/30 12:02:26 by edfreder          #+#    #+#             */
+/*   Updated: 2025/05/30 16:13:26 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-int	ft_putnbr_base(unsigned long long n, char *base_s, int base_i)
+int clean_and_return(t_list **lst, t_map *map, int fd, int status)
 {
-	int	total;
+	if (lst && *lst)
+		ft_lstclear(lst, &free);
+	if (map->collects_cord)
+		ft_coord_lstclear(&map->collects_cord);
+	if (fd > 2)
+		close(fd);
+	return (status);
+}
 
-	total = 0;
-	if (n >= (unsigned long long)base_i)
-		total += ft_putnbr_base(n / base_i, base_s, base_i);
-	ft_putchar_fd(base_s[n % base_i], 1);
-	return (total + 1);
+void	clean_grid(char **grid)
+{
+	int	i;
+
+	i = 0;
+	while (grid[i])
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
 }

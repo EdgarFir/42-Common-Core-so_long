@@ -6,11 +6,28 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:34:11 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/29 15:02:37 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/30 10:31:29 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	coord_check(t_coord *coord, char **grid_map, char c)
+{
+	t_coord *ptr;
+	
+	if (coord)
+	{
+		ptr = coord;
+		while (ptr)
+		{
+			if (grid_map[ptr->y][ptr->x] != c)
+				return (0);
+			ptr = ptr->next;
+		}
+	}
+	return (1);
+}
 
 t_coord *coord_lstnew(int x, int y)
 {
@@ -33,12 +50,14 @@ int	save_coord(t_map *map, int x, int y, char c)
 	{
 		map->exit_cord.x = x;
 		map->exit_cord.y = y;
+		map->exit_cord.next = NULL;
 		map->exit++;
 	}
 	else if (c == 'P')
 	{
 		map->start_pos_cord.x = x;
 		map->start_pos_cord.y = y;
+		map->start_pos_cord.next = NULL;
 		map->start_pos++;
 	}
 	else if (c == 'C')

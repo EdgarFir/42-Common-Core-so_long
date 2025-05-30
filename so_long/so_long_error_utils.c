@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 23:47:27 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/29 14:56:39 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:16:13 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@ int	send_err(char *err, int status)
 	return (status);
 }
 
-int clean_and_return(t_list **lst, t_coord **coord_lst, int fd, int status)
-{
-	if (*lst)
-		ft_lstclear(lst, &free);
-	if (*coord_lst)
-		ft_coord_lstclear(coord_lst);
-	if (fd > 2)
-		close(fd);
-	return (status);
-}
-
 int is_valid_char(char c)
 {
 	char	*valid_chars;
@@ -39,3 +28,23 @@ int is_valid_char(char c)
 		return (0);
 	return (1);
 }
+
+int is_valid_path(int *fd, char *filename)
+{
+	char	*extension;
+
+	*fd = open(filename, O_RDONLY);
+	if (*fd == -1)
+	{
+		ft_putendl_fd(FILE_NOT_EXIST, 2);
+		return (0);
+	}
+	extension = ft_strrchr(filename, '.');
+	if (ft_strcmp(extension, ".ber"))
+	{
+		ft_putendl_fd(FILE_EXT_ERR, 2);
+		return (0);
+	}
+	return (1);
+}
+

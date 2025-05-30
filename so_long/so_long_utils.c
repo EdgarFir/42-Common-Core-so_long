@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:31:04 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/29 15:02:08 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:09:48 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,6 @@ int	build_map(t_list **lst, int fd)
 		ft_lstadd_back(lst, new);
 		if (!check_rectangule(&line_len, &curr_len))
 			return (send_err("Map is not a rectangule.", 0));
-	}
-	return (1);
-}
-
-int is_valid_path(int *fd, char *filename)
-{
-	char	*extension;
-
-	extension = ft_strrchr(filename, '.');
-	*fd = open(filename, O_RDONLY);
-	if (*fd == -1)
-	{
-		ft_putendl_fd(FILE_NOT_EXIST, 2);
-		return (0);
-	}
-	if (ft_strcmp(extension, ".ber"))
-	{
-		ft_putendl_fd(FILE_EXT_ERR, 2);
-		return (0);
 	}
 	return (1);
 }
@@ -106,15 +87,43 @@ char	**create_grid(t_list *lst, int height)
 	return (grid);
 }
 
-void	clean_grid(char **grid)
+void reset_map(char **grid_map, t_map *map)
 {
-	int	i;
+	t_coord *ptr;
 
-	i = 0;
-	while (grid[i])
+	mark_valid_plays(grid_map, map->start_pos_cord.x, map->start_pos_cord.y, '0');
+	ptr = map->collects_cord;
+	while (ptr)
 	{
-		free(grid[i]);
-		i++;
+		grid_map[ptr->y][ptr->x] = 'C';
+		ptr = ptr->next;
 	}
-	free(grid);
 }
+
+char	**get_grid_map(t_list **lst, t_map *map, int *fd, char *filename)
+{
+	int 	lst_size;
+	char	**grid_map;
+
+	if (!is_valid_path(fd, filename))
+		return (NULL);
+	if (!build_map(lst, *fd))
+		return (NULL);
+	lst_size = ft_lstsize(*lst);
+	if (lst_size < 3)
+	{
+		send_err(MAP_SIZE_ERR, 0);
+		return (NULL);
+	}
+	grid_map = create_grid(*lst, lst_size);
+	if (!grid_map)
+		return (NULL);
+	if (!check_map(grid_map, map) || !check_valid_plays(grid_map, *map))
+	{
+		clean_grid(grid_map);
+		return (NULL);
+	}
+	reset_map(grid_map, map);
+	return (grid_map);
+}
+
