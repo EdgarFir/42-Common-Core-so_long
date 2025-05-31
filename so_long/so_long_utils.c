@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:31:04 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/30 12:09:48 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/31 22:55:36 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ char	**create_grid(t_list *lst, int height)
 	return (grid);
 }
 
-void reset_map(char **grid_map, t_map *map)
+void	reset_map(char **grid_map, t_map *map)
 {
-	t_coord *ptr;
+	t_coord	*ptr;
 
-	mark_valid_plays(grid_map, map->start_pos_cord.x, map->start_pos_cord.y, '0');
-	ptr = map->collects_cord;
+	mark_plays(grid_map, map->start_coord.x, map->start_coord.y, '0');
+	ptr = map->colls_coord;
 	while (ptr)
 	{
 		grid_map[ptr->y][ptr->x] = 'C';
@@ -100,9 +100,9 @@ void reset_map(char **grid_map, t_map *map)
 	}
 }
 
-char	**get_grid_map(t_list **lst, t_map *map, int *fd, char *filename)
+char	**get_grid_map(t_list **lst, t_game *game, int *fd, char *filename)
 {
-	int 	lst_size;
+	int		lst_size;
 	char	**grid_map;
 
 	if (!is_valid_path(fd, filename))
@@ -118,12 +118,13 @@ char	**get_grid_map(t_list **lst, t_map *map, int *fd, char *filename)
 	grid_map = create_grid(*lst, lst_size);
 	if (!grid_map)
 		return (NULL);
-	if (!check_map(grid_map, map) || !check_valid_plays(grid_map, *map))
+	if (!check_map(grid_map, &game->map) || !check_plays(grid_map, &game->map))
 	{
 		clean_grid(grid_map);
 		return (NULL);
 	}
-	reset_map(grid_map, map);
+	reset_map(grid_map, &game->map);
+	game->map.width = ft_strlen(grid_map[0]);
+	game->map.height = lst_size;
 	return (grid_map);
 }
-

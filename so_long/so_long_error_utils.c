@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 23:47:27 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/30 16:16:13 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/05/31 23:03:05 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	send_err(char *err, int status)
 	return (status);
 }
 
-int is_valid_char(char c)
+int	is_valid_char(char c)
 {
 	char	*valid_chars;
 
@@ -29,7 +29,7 @@ int is_valid_char(char c)
 	return (1);
 }
 
-int is_valid_path(int *fd, char *filename)
+int	is_valid_path(int *fd, char *filename)
 {
 	char	*extension;
 
@@ -47,4 +47,3 @@ int is_valid_path(int *fd, char *filename)
 	}
 	return (1);
 }
-
