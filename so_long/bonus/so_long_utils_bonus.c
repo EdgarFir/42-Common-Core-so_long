@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   so_long_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:31:04 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 21:07:42 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 00:36:14 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	build_map(t_list **lst, int fd)
 {
@@ -52,7 +52,7 @@ int	save_map_info(char *line, int line_index, t_map *map)
 			if (line[i] != '1')
 				return (send_err(MAP_WALL_ERR, 0));
 		}
-		else if (is_valid_char(line[i]))
+		else if (is_valid_char(line[i]) && (line[i] != '0' || line[i] != '1'))
 		{
 			if (!save_coord(map, i, line_index, line[i]))
 				return (0);
@@ -102,8 +102,8 @@ void	reset_map(char **grid_map, t_map *map)
 
 void	mark_plays(char **grid_map, int x, int y, char mark)
 {
-	if (grid_map[y][x] == '1' || grid_map[y][x] == mark
-			|| grid_map[y][x] == 'E')
+	if (grid_map[y][x] == '1' || grid_map[y][x] == mark ||
+		grid_map[y][x] == 'K' || grid_map[y][x] == 'E')
 		return ;
 	else if (grid_map[y][x] != 'P')
 		grid_map[y][x] = mark;

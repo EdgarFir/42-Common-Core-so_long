@@ -1,0 +1,15 @@
+==446099== Memcheck, a memory error detector
+==446099== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==446099== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==446099== Command: ./so_long maps_test/rectangule3.ber
+==446099== 
+Error
+Map is not a rectangule.
+==446099== 
+==446099== HEAP SUMMARY:
+==446099==     in use at exit: 0 bytes in 0 blocks
+==446099==   total heap usage: 32 allocs, 32 frees, 272 bytes allocated
+==446099== 
+==446099== All heap blocks were freed -- no leaks are possible
+==446099== 
+==446099== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,14 @@
+==445973== Memcheck, a memory error detector
+==445973== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==445973== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==445973== Command: ./so_long maps_test/invalid_path.ber
+==445973== 
+File does not exist.
+==445973== 
+==445973== HEAP SUMMARY:
+==445973==     in use at exit: 0 bytes in 0 blocks
+==445973==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==445973== 
+==445973== All heap blocks were freed -- no leaks are possible
+==445973== 
+==445973== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

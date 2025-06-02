@@ -1,0 +1,15 @@
+==446072== Memcheck, a memory error detector
+==446072== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==446072== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==446072== Command: ./so_long maps_test/invalid_size.ber
+==446072== 
+Error
+File .ber must have at least 3 lines.
+==446072== 
+==446072== HEAP SUMMARY:
+==446072==     in use at exit: 0 bytes in 0 blocks
+==446072==   total heap usage: 34 allocs, 34 frees, 290 bytes allocated
+==446072== 
+==446072== All heap blocks were freed -- no leaks are possible
+==446072== 
+==446072== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

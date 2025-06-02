@@ -1,0 +1,15 @@
+==446027== Memcheck, a memory error detector
+==446027== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==446027== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==446027== Command: ./so_long maps_test/no_player.ber
+==446027== 
+Error
+Map must have 1 exit, 1 start and at least 1 collectable.
+==446027== 
+==446027== HEAP SUMMARY:
+==446027==     in use at exit: 0 bytes in 0 blocks
+==446027==   total heap usage: 64 allocs, 64 frees, 660 bytes allocated
+==446027== 
+==446027== All heap blocks were freed -- no leaks are possible
+==446027== 
+==446027== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

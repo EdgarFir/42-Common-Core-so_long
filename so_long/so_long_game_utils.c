@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 21:59:30 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 22:59:44 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/01 22:51:15 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,15 @@ void	move_player(int x, int y, t_game *game)
 
 int	handle_key(int keysym, t_game *game)
 {
-	if (keysym == XK_w || keysym == XK_Up)
+	if (keysym == XK_w)
 		move_player(game->map.start_coord.x, game->map.start_coord.y - 1, game);
-	if (keysym == XK_s || keysym == XK_Down)
+	else if (keysym == XK_s)
 		move_player(game->map.start_coord.x, game->map.start_coord.y + 1, game);
-	if (keysym == XK_a || keysym == XK_Left)
+	else if (keysym == XK_a)
 		move_player(game->map.start_coord.x - 1, game->map.start_coord.y, game);
-	if (keysym == XK_d || keysym == XK_Right)
+	else if (keysym == XK_d)
 		move_player(game->map.start_coord.x + 1, game->map.start_coord.y, game);
+	else if (keysym == XK_Escape)
+		exit_game(game);
 	return (0);
 }

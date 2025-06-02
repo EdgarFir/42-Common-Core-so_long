@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:26:32 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 21:15:18 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 00:56:27 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	start_game(t_game *game, int w, int h)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		return ;
-	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, h * SIZE, "42");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, (h + 1) * SIZE, "42");
 	game->moves = 0;
 	if (!game->win_ptr)
 	{
@@ -26,6 +26,9 @@ void	start_game(t_game *game, int w, int h)
 	}
 	if (!load_images(&game->image, game->mlx_ptr))
 		exit_game(game);
+	game->image.p_lf_mv = 1;
+	game->image.p_rt_mv = 1;
+	game->image.enemy_mv = 1;
 	mount_game(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_key, game);
 	mlx_hook(game->win_ptr, 17, StructureNotifyMask, &exit_game, game);
@@ -50,6 +53,9 @@ char	**get_grid_map(t_list **lst, t_game *game, int *fd, char *filename)
 	grid_map = create_grid(*lst, lst_size);
 	if (!grid_map)
 		return (NULL);
+	for (int i = 0; i < lst_size; i++)
+			ft_printf("%s\n", grid_map[i]);
+	ft_printf("\n");
 	if (!check_map(grid_map, &game->map) || !check_plays(grid_map, &game->map))
 	{
 		clean_grid(grid_map);

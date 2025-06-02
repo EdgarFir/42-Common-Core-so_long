@@ -1,0 +1,15 @@
+==446000== Memcheck, a memory error detector
+==446000== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==446000== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==446000== Command: ./so_long maps_test/no_colls3.ber
+==446000== 
+Error
+Invalid map. Collectables not reachable.
+==446000== 
+==446000== HEAP SUMMARY:
+==446000==     in use at exit: 0 bytes in 0 blocks
+==446000==   total heap usage: 63 allocs, 63 frees, 644 bytes allocated
+==446000== 
+==446000== All heap blocks were freed -- no leaks are possible
+==446000== 
+==446000== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

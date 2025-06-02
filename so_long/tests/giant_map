@@ -1,0 +1,17 @@
+==448844== Memcheck, a memory error detector
+==448844== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==448844== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==448844== Command: ./so_long maps_test/giant_map.ber
+==448844== 
+==448844== 
+==448844== HEAP SUMMARY:
+==448844==     in use at exit: 0 bytes in 0 blocks
+==448844==   total heap usage: 2,334 allocs, 2,334 frees, 1,504,889 bytes allocated
+==448844== 
+==448844== All heap blocks were freed -- no leaks are possible
+==448844== 
+==448844== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 313 from 1)
+--448844-- 
+--448844-- used_suppression:    313 X on SUSE11 writev uninit padding /usr/libexec/valgrind/default.supp:377
+==448844== 
+==448844== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 313 from 1)

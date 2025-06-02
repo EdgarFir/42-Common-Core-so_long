@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_map_check.c                                :+:      :+:    :+:   */
+/*   so_long_map_check_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:29:17 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 21:09:40 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 01:00:39 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	check_exit(char **grid_map, int x, int y)
 {
@@ -79,10 +79,7 @@ int	check_map(char **grid, t_map *map)
 {
 	int		i;
 
-	map->colls = 0;
-	map->exit = 0;
-	map->start = 0;
-	map->colls_coord = NULL;
+	ft_memset(map, 0, sizeof(map));
 	i = 0;
 	while (grid[i])
 	{
@@ -98,7 +95,8 @@ int	check_map(char **grid, t_map *map)
 		}
 		i++;
 	}
-	if (map->colls <= 0 || map->exit != 1 || map->start != 1)
+	if (map->colls <= 0 || map->exit != 1 
+		|| map->start != 1 || map->enemies <= 0)
 		return (send_err(MAP_CHR_ERR, 0));
 	return (1);
 }
