@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:34:11 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 00:55:24 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:32:24 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_coord	*coord_lstnew(t_coord *coord, int x, int y)
 {
 	t_coord	*new;
 
+	new = NULL;
 	if (!coord)
 	{
 		new = malloc(sizeof(t_coord));

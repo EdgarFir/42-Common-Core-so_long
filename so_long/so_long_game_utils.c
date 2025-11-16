@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 21:59:30 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 22:51:15 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 12:16:08 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	load_images(t_image *image, void *mlx_ptr)
 
 	image->collect = mlx_xpm_file_to_image(mlx_ptr, "textures/c.xpm", &x, &y);
 	image->floor = mlx_xpm_file_to_image(mlx_ptr, "textures/0.xpm", &x, &y);
-	image->player = mlx_xpm_file_to_image(mlx_ptr, "textures/p.xpm", &x, &y);
+	image->player = mlx_xpm_file_to_image(mlx_ptr, "textures/pr1.xpm", &x, &y);
 	image->wall = mlx_xpm_file_to_image(mlx_ptr, "textures/1.xpm", &x, &y);
 	image->exit = mlx_xpm_file_to_image(mlx_ptr, "textures/e.xpm", &x, &y);
 	if (!image->collect || !image->floor || !image->player

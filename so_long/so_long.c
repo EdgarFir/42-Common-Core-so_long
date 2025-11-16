@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:26:32 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 21:15:18 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:32:50 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	start_game(t_game *game, int w, int h)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		return ;
-	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, h * SIZE, "42");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, h * SIZE, TITLE);
 	game->moves = 0;
 	if (!game->win_ptr)
 	{

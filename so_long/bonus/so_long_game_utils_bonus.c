@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 21:59:30 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 01:45:37 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:51:10 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	mount_game(t_game *game)
 		}
 		i++;
 	}
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 32, i * SIZE + 32, 0xFF0000, "Moves: 0");
 }
 
 int	load_images(t_image *image, void *mlx_ptr)
@@ -53,18 +52,18 @@ int	load_images(t_image *image, void *mlx_ptr)
 	int	x;
 	int	y;
 
-	image->collect = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/c.xpm", &x, &y);
-	image->floor = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/0.xpm", &x, &y);
-	image->p_f = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_fr.xpm", &x, &y);
-	image->p_lf_1 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_lf_1.xpm", &x, &y);
-	image->p_lf_2 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_lf_2.xpm", &x, &y);
-	image->p_rt_1 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_rt_1.xpm", &x, &y);
-	image->p_rt_2 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_rt_2.xpm", &x, &y);
-	image->p_up = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/p_up.xpm", &x, &y);
-	image->wall = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/1.xpm", &x, &y);
-	image->exit = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/e.xpm", &x, &y);
-	image->enemy_1 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/enemy_1.xpm", &x, &y);
-	image->enemy_2 = mlx_xpm_file_to_image(mlx_ptr, "bonus/textures/enemy_2.xpm", &x, &y);
+	image->collect = mlx_xpm_file_to_image(mlx_ptr, "textures/c.xpm", &x, &y);
+	image->floor = mlx_xpm_file_to_image(mlx_ptr, "textures/0.xpm", &x, &y);
+	image->p_f = mlx_xpm_file_to_image(mlx_ptr, "textures/pf.xpm", &x, &y);
+	image->p_lf_1 = mlx_xpm_file_to_image(mlx_ptr, "textures/pl1.xpm", &x, &y);
+	image->p_lf_2 = mlx_xpm_file_to_image(mlx_ptr, "textures/pl2.xpm", &x, &y);
+	image->p_rt_1 = mlx_xpm_file_to_image(mlx_ptr, "textures/pr1.xpm", &x, &y);
+	image->p_rt_2 = mlx_xpm_file_to_image(mlx_ptr, "textures/pr2.xpm", &x, &y);
+	image->p_up = mlx_xpm_file_to_image(mlx_ptr, "textures/pu.xpm", &x, &y);
+	image->wall = mlx_xpm_file_to_image(mlx_ptr, "textures/1.xpm", &x, &y);
+	image->exit = mlx_xpm_file_to_image(mlx_ptr, "textures/e.xpm", &x, &y);
+	image->enemy_1 = mlx_xpm_file_to_image(mlx_ptr, "textures/en1.xpm", &x, &y);
+	image->enemy_2 = mlx_xpm_file_to_image(mlx_ptr, "textures/en2.xpm", &x, &y);
 	if (!image->collect || !image->floor || !image->p_f || !image->p_lf_1
 		|| !image->p_lf_2 || !image->p_rt_1 || !image->p_rt_2 || !image->p_up
 		|| !image->wall || !image->exit || !image->enemy_1 || !image->enemy_2)
@@ -81,11 +80,10 @@ void	move_player(int x, int y, t_game *game, char key)
 	old_y = game->map.start_coord.y;
 	if (game->grid_map[y][x] == 'C' || game->grid_map[y][x] == '0')
 	{
+		game->grid_map[old_y][old_x] = '0';
 		if (game->grid_map[y][x] == 'C')
-		{
-			game->grid_map[y][x] = '0';
 			game->score++;
-		}
+		game->grid_map[y][x] = '0';
 		render_str(game);
 		render_img(game, game->image.floor, old_x * SIZE, old_y * SIZE);
 		render_player(game, x * SIZE, y * SIZE, key);
@@ -96,21 +94,26 @@ void	move_player(int x, int y, t_game *game, char key)
 		if (render_enemy(game, x, y, 2))
 			game->image.enemy_mv = 2;
 	}
-	else if (game->grid_map[y][x] == 'K' 
+	else if (game->grid_map[y][x] == 'K'
 		|| (game->grid_map[y][x] == 'E' && game->score == game->map.colls))
 		exit_game(game);
 }
 
 int	handle_key(int keysym, t_game *game)
 {
+	int	x;
+	int	y;
+
+	x = game->map.start_coord.x;
+	y = game->map.start_coord.y;
 	if (keysym == XK_w)
-		move_player(game->map.start_coord.x, game->map.start_coord.y - 1, game, 'w');
+		move_player(x, y - 1, game, 'w');
 	else if (keysym == XK_s)
-		move_player(game->map.start_coord.x, game->map.start_coord.y + 1, game, 's');
+		move_player(x, y + 1, game, 's');
 	else if (keysym == XK_a)
-		move_player(game->map.start_coord.x - 1, game->map.start_coord.y, game, 'a');
+		move_player(x - 1, y, game, 'a');
 	else if (keysym == XK_d)
-		move_player(game->map.start_coord.x + 1, game->map.start_coord.y, game, 'd');
+		move_player(x + 1, y, game, 'd');
 	else if (keysym == XK_Escape)
 		exit_game(game);
 	return (0);

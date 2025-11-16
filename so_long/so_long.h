@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 13:31:17 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 21:09:12 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:32:42 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # define SO_LONG_H
 
 # define SIZE 64
+# define TITLE "so_long"
 # define FILE_NOT_EXIST "File does not exist."
 # define FILE_EXT_ERR "Non compatible map extension."
-# define MAP_CHR_ERR "Map must have 1 exit, 1 start and at least 1 collectable."
+# define MAP_CHR_ERR "Map needs 1 exit, 1 start, 1 collect at minimum."
 # define MAP_INV_CHR_ERR "Map has an invalid character."
 # define MAP_WALL_ERR "Map not surronded by walls."
 # define MAP_SIZE_ERR "File .ber must have at least 3 lines."

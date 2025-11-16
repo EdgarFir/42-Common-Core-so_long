@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 22:26:32 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 00:56:27 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:34:00 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	start_game(t_game *game, int w, int h)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		return ;
-	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, (h + 1) * SIZE, "42");
+	h++;
+	game->win_ptr = mlx_new_window(game->mlx_ptr, w * SIZE, h * SIZE, TITLE);
 	game->moves = 0;
 	if (!game->win_ptr)
 	{
@@ -30,6 +31,7 @@ void	start_game(t_game *game, int w, int h)
 	game->image.p_rt_mv = 1;
 	game->image.enemy_mv = 1;
 	mount_game(game);
+	mount_counter(game, RED, "Moves: 0");
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_key, game);
 	mlx_hook(game->win_ptr, 17, StructureNotifyMask, &exit_game, game);
 	mlx_loop(game->mlx_ptr);
@@ -53,9 +55,6 @@ char	**get_grid_map(t_list **lst, t_game *game, int *fd, char *filename)
 	grid_map = create_grid(*lst, lst_size);
 	if (!grid_map)
 		return (NULL);
-	for (int i = 0; i < lst_size; i++)
-			ft_printf("%s\n", grid_map[i]);
-	ft_printf("\n");
 	if (!check_map(grid_map, &game->map) || !check_plays(grid_map, &game->map))
 	{
 		clean_grid(grid_map);

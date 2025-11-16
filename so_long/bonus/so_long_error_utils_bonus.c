@@ -39,11 +39,16 @@ int	is_valid_path(int *fd, char *filename)
 		ft_putendl_fd(FILE_NOT_EXIST, 2);
 		return (0);
 	}
-	extension = ft_strrchr(filename, '.');
+	extension = ft_strchr(filename, '.');
 	if (ft_strcmp(extension, ".ber"))
 	{
 		ft_putendl_fd(FILE_EXT_ERR, 2);
 		return (0);
+	}
+	else
+	{
+		if (extension[4] != '\0')
+			ft_putendl_fd(FILE_EXT_ERR, 2);
 	}
 	return (1);
 }

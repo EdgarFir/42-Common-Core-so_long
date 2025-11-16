@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 13:31:17 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 01:36:06 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:33:28 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 # define SO_LONG_BONUS_H
 
 # define SIZE 64
+# define RED 0xFF0000
+# define BLACK 0x000000
+# define TITLE "so_long 42"
 # define FILE_NOT_EXIST "File does not exist."
 # define FILE_EXT_ERR "Non compatible map extension."
-# define MAP_CHR_ERR "Map must have 1 exit, 1 start and at least 1 collectable and 1 enemy."
+# define MAP_CERR "Map needs 1 exit, 1 start, 1 collect and 1 enemy at minimum."
 # define MAP_INV_CHR_ERR "Map has an invalid character."
 # define MAP_WALL_ERR "Map not surronded by walls."
 # define MAP_SIZE_ERR "File .ber must have at least 3 lines."
@@ -111,11 +114,10 @@ int		handle_key(int keysym, t_game *game);
 void	move_player(int x, int y, t_game *game, char key);
 int		load_images(t_image *image, void *mlx_ptr);
 void	mount_game(t_game *game);
-
-
+/* Helper */
 void	render_player(t_game *game, int x, int y, char key);
 int		render_str(t_game *game);
 int		render_enemy(t_game *game, int p_x, int p_y, int enemy_mv);
-
+void	mount_counter(t_game *game, int color, char *str);
 
 #endif

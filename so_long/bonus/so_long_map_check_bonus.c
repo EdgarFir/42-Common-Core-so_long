@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:29:17 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 01:00:39 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 12:45:18 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int	check_map(char **grid, t_map *map)
 		}
 		i++;
 	}
-	if (map->colls <= 0 || map->exit != 1 
+	if (map->colls <= 0 || map->exit != 1
 		|| map->start != 1 || map->enemies <= 0)
-		return (send_err(MAP_CHR_ERR, 0));
+		return (send_err(MAP_CERR, 0));
 	return (1);
 }

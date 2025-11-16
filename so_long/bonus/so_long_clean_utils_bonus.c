@@ -6,7 +6,7 @@
 /*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:02:26 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/02 00:55:50 by edfreder         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:28:31 by edfreder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,3 @@ int	clean_helper(void *ptr1, void *ptr2, void *ptr3, int status)
 		free(ptr3);
 	return (status);
 }
-
