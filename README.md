@@ -1,62 +1,64 @@
 # so_long
 
-O **so_long** é um mini-jogo 2D desenvolvido em C utilizando a **MiniLibX**, onde o jogador deve recolher todos os colecionáveis do mapa e alcançar a saída. Este projeto introduz conceitos de renderização gráfica simples, manipulação de eventos, parsing de mapas e interação com o ambiente.
+**so_long** is a 2D mini-game developed in C using **MiniLibX**, where the player must collect all collectibles in the map and reach the exit. This project introduces concepts such as simple graphical rendering, event handling, map parsing, and interaction with the environment.
 
 ---
 
-## 🎮 Objetivo
+## 🎮 Objective
 
-- Controlar o jogador num mapa definido em ficheiro `.ber`
-- Recolher todos os colecionáveis (`C`)
-- Chegar à saída (`E`) após recolher todos os itens
-- Evitar inimigos (`N`) na versão bônus
-
----
-
-## 🗺️ Formato do Mapa
-
-O mapa deve seguir as seguintes regras:
-
-- Ser retangular  
-- Estar totalmente rodeado por paredes (`1`)  
-- Conter apenas um jogador (`P`)  
-- Ter pelo menos um colecionável (`C`)  
-- Ter pelo menos uma saída (`E`)  
-- Caracteres permitidos:  
-  - `0` chão  
-  - `1` parede  
-  - `P` jogador  
-  - `C` colecionável  
-  - `E` saída  
-  - `N` inimigo (bônus)
- 
-  ## ⌨️ Controles
-
-| Tecla | Ação |
-|------|-------|
-| W / ↑ | Mover para cima |
-| A / ← | Mover para a esquerda |
-| S / ↓ | Mover para baixo |
-| D / → | Mover para a direita |
-| ESC   | Fechar o jogo |
-
-Cada movimento incrementa um contador de passos mostrado no terminal.
+- Control the player in a map loaded from a `.ber` file  
+- Collect all collectibles (`C`)  
+- Reach the exit (`E`) after collecting all items  
+- Avoid enemies (`N`) in the bonus version  
 
 ---
 
-## ⭐ Bônus (Opcional)
+## 🗺️ Map Format
 
-- Animações (sprites animados)  
-- Inimigos com movimento simples  
-- Sprites diferentes conforme a direção ou estado  
-- Mapa maior e mais dinâmico
+The map must follow these rules:
 
-## 🛠️ Tecnologias
+- It must be rectangular  
+- It must be completely surrounded by walls (`1`)  
+- It must contain exactly one player (`P`)  
+- It must contain at least one collectible (`C`)  
+- It must contain at least one exit (`E`)  
+- Allowed characters:  
+  - `0` floor  
+  - `1` wall  
+  - `P` player  
+  - `C` collectible  
+  - `E` exit  
+  - `N` enemy (bonus)
+
+---
+
+## ⌨️ Controls
+
+| Key | Action |
+|------|--------|
+| W / ↑ | Move up |
+| A / ← | Move left |
+| S / ↓ | Move down |
+| D / → | Move right |
+| ESC   | Close the game |
+
+Each movement increases a step counter printed in the terminal.
+
+---
+
+## ⭐ Bonus (Optional)
+
+- Animations (animated sprites)  
+- Enemies with simple movement  
+- Different sprites depending on direction or state  
+- Larger and more dynamic maps  
+
+---
+
+## 🛠️ Technologies
 
 - C  
 - MiniLibX (mlx)  
-- Imagens `.xpm`  
-- Eventos de teclado e janela  
-
-### Exemplo:
+- `.xpm` image files  
+- Keyboard and window event handling  
 
